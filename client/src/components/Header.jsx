@@ -3,16 +3,16 @@ import {Link} from 'react-router-dom';
 
 const Header = () => (
     <nav>
-        <Link to="/">Trackercise</Link>
+        <Link to="/exercises">Trackercise</Link>
         <ul>
             <li>
-                <Link to="/">Exercises</Link>
+                <Link to="/exercises">Exercises</Link>
             </li>
             <li>
-                <Link to="/create">Log Exercise</Link>
+                <Link to="/exercises/add">Log Exercise</Link>
             </li>
             <li>
-                <Link to="/user">Create User</Link>
+                <Link to="/users/add">Create User</Link>
             </li>
         </ul>
     </nav>

@@ -22,7 +22,7 @@ class CreateUser extends React.Component {
         const user = {
             username: this.state.username,
         }
-        axios.post('http://localhost:5000/users/add', user)
+        axios.post('/users/add', user)
             .then(data => console.log('Success', data))
             .catch(err => console.log('Failed', err));
         

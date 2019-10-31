@@ -52,11 +52,16 @@ class CreateExercise extends React.Component {
             duration: this.state.duration,
             date: this.state.date
         }
-        axios.post('http://localhost:5000/exercises/add', exercise)
+        axios.post('/exercises/add', exercise)
             .then(data => console.log('Success', data))
             .catch(err => console.log('Failed', err));
         
-            this.props.history.push("/");
+        this.props.history.push({
+            pathname: '/',
+            state: { 
+                from: this.props.location.pathname
+            }
+          })
     }
 
     render() {

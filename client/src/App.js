@@ -11,10 +11,10 @@ function App() {
     return (
         <Router>
             <Header/>
-            <Route path="/" exact component={ExercisesList}/>
-            <Route path="/edit/:id" exact component={EditExercise}/>
-            <Route path="/create" exact component={CreateExercise}/>
-            <Route path="/user" exact component={CreateUser}/>
+            <Route path="/exercises" exact component={ExercisesList}/>
+            <Route path="/exercises/update/:id" exact component={EditExercise}/>
+            <Route path="/exercises/add" exact component={CreateExercise}/>
+            <Route path="/users/add" exact component={CreateUser}/>
         </Router>
     );
 }
