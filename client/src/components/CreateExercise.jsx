@@ -1,6 +1,7 @@
 import React from 'react';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
+import axios from 'axios';
 
 class CreateExercise extends React.Component {
     constructor(props) {
@@ -18,7 +19,18 @@ class CreateExercise extends React.Component {
         this.handleOnSubmit = this.handleOnSubmit.bind(this);
     }
     componentDidMount() {
-        this.setState(() => ({users: ['you', 'milton'], username: 'you'}))
+         axios.get('http://localhost:5000/users/')
+            .then(response => {
+                if(response.data.length > 0) {
+                    this.setState(() => ({ 
+                        users: response.data.map(user => {
+                            return user.username;
+                        }),
+                        username: response.data[0].username
+                    }));
+                }
+            })
+            .catch(err => console.log(err));
     }
 
     handleOnChange(e) {
@@ -40,10 +52,7 @@ class CreateExercise extends React.Component {
             duration: this.state.duration,
             date: this.state.date
         }
-        fetch('/create', {
-                method: 'POST',
-                body: JSON.stringify(exercise)
-            })
+        axios.post('http://localhost:5000/exercises/add', exercise)
             .then(data => console.log('Success', data))
             .catch(err => console.log('Failed', err));
         
